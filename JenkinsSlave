@@ -1,0 +1,10 @@
+username=$1
+sudo su root	
+useradd ${username}
+yum install java-1.8* -y	
+su ${username} -	
+ssh-keygen -t rsa -N "" -f /home/${username}/.ssh/id_rsa
+cd ~/.ssh
+cat id_rsa.pub > authorized_keys
+chmod 700 authorized_keys
+cat id_rsa
